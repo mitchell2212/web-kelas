@@ -19,7 +19,7 @@ CREATE TABLE siswa (
     id INT AUTO_INCREMENT PRIMARY KEY,
     kelas_id INT NOT NULL,
     nisn VARCHAR(20) NOT NULL,
-    nama VARCHAR(100) NOT NULL,
+    nama VARCHAR(100) NOT NULL,db_kelas
     FOREIGN KEY (kelas_id) REFERENCES kelas(id) ON DELETE CASCADE
 );
 
@@ -49,3 +49,12 @@ CREATE TABLE nilai_ujian (
     skor FLOAT DEFAULT 0,
     FOREIGN KEY (siswa_id) REFERENCES siswa(id) ON DELETE CASCADE
 );
+
+-- Contoh pembaruan data Presensi
+UPDATE presensi SET status = '$status_baru' WHERE id_pertemuan = '$id_pertemuan' AND id_siswa = '$id_siswa';
+
+-- Contoh pembaruan data Tugas
+UPDATE nilai_tugas SET skor = '$skor_baru' WHERE id_tugas = '$id_tugas' AND id_siswa = '$id_siswa';
+
+-- Contoh pembaruan data Ujian
+UPDATE nilai_ujian SET nilai_uts = '$nilai_baru' WHERE id_ujian = '$id_ujian' AND id_siswa = '$id_siswa';
